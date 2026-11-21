@@ -19,7 +19,14 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-28 px-5 flex-1">
+      <div>
+        <% flash.each do |type, message| %>
+          <div class="mx-auto mt-4 max-w-6xl rounded-lg bg-green-100 p-4 text-green-800">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
       <%= yield %>
     </main>
   </body>
