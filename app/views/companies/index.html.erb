@@ -1,78 +1,12 @@
 <div class="mx-auto max-w-6xl p-8">
-
   <div class="mb-8 flex items-center justify-between">
-
-    <h1 class="text-3xl font-bold">
-      Companies
-    </h1>
-
-    <%= link_to "New Company",
-                new_company_path,
-                class: "rounded-lg bg-blue-600 px-5 py-3 text-white" %>
-
-  </div>
-
-  <div class="overflow-hidden rounded-xl border bg-white">
-
-    <table class="w-full text-left">
-
-      <thead class="bg-gray-100">
-      <tr>
-        <th class="p-4">Company</th>
-        <th class="p-4">Industry</th>
-        <th class="p-4">Email</th>
-        <th class="p-4">Actions</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @companies.each do |company| %>
-
-        <tr class="border-t">
-
-          <td class="p-4 font-medium">
-            <%= link_to company.name, company,
-                        class: "text-blue-600 hover:underline" %>
-          </td>
-
-          <td class="p-4">
-            <%= company.industry %>
-          </td>
-
-          <td class="p-4">
-            <%= company.email %>
-          </td>
-
-          <td class="space-x-3 p-4">
-
-            <%= link_to "Edit",
-                        edit_company_path(company),
-                        class: "text-blue-600" %>
-
-            <%= button_to "Delete",
-                          company_path(company),
-                          method: :delete,
-                          class: "text-red-600",
-                          form: { class: "inline" },
-                          data: {
-                            turbo_confirm: "Are you sure?"
-                          } %>
-
-          </td>
-
-        </tr>
-
-      <% end %>
-      </tbody>
-
-    </table>
-
-    <% if @companies&.empty? %>
-      <p class="p-8 text-center text-gray-500">
-        No companies found.
-      </p>
+    <h1 class="text-3xl font-bold"> Companies</h1>
+     <%= turbo_frame_tag "company_form" do %>
+      <%= link_to "New Company", new_company_path,
+                  class: "rounded-lg bg-blue-600 px-5 py-3 text-white" %>
     <% end %>
-
   </div>
-
+  <div id="companies">
+    <%= render "companies" %>
+  </div>
 </div>

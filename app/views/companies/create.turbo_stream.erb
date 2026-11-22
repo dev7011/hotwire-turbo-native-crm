@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "companies",
+                         partial: "companies/company",
+                         locals: { company: @company } %>
+
+<%= turbo_stream.update "company_form" do %>
+  <%= link_to "New Company", new_company_path %>
+<% end %>

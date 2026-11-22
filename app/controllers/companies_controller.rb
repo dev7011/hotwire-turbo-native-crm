@@ -20,7 +20,13 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to @company, notice: "Company created successfully."
+      respond_to do |format|
+        format.turbo_stream
+        format.html {
+          redirect_to @company,
+                      notice: "Company was successfully created."
+        }
+      end
     else
       render :new, status: :unprocessable_entity
     end
