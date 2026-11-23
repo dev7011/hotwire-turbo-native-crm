@@ -1,0 +1,7 @@
+<%= turbo_stream.replace dom_id(@contact), @contact %>
+
+<%= turbo_stream.update "contact_form", "" %>
+
+<%= turbo_stream.update "contact_button_new" do %>
+  <% render "button_new" %>
+<% end %>

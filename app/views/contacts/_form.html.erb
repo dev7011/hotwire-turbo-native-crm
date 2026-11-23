@@ -1,0 +1,35 @@
+<%= form_with model: [@company, contact], data: { turbo_stream: true } do |form| %>
+
+  <%=render "shared/error_form", record: contact %>
+
+  <div class="space-y-4">
+    <div>
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= form.label :phone %>
+      <%= form.telephone_field :phone,
+                               class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= form.label :position %>
+      <%= form.text_field :position, class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <%= form.submit class: "rounded-lg bg-blue-600 px-6 py-3 text-white" %>
+
+  </div>
+<% end %>

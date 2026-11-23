@@ -1,0 +1,5 @@
+<%= turbo_stream.update "contact_button_new", "" %>
+
+<%= turbo_stream.update "contact_form" do %>
+  <%= render "form_panel", contact: @contact %>
+<% end %>

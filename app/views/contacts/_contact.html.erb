@@ -1,0 +1,28 @@
+<tr id="<%= dom_id(contact) %>" class="border-t">
+  <td class="p-4 font-medium">
+    <%= link_to "#{contact.first_name} #{contact.last_name}",
+                company_contact_path(@company, contact),
+                class: "text-blue-600"
+    %>
+  </td>
+
+  <td class="p-4"><%= contact.position %></td>
+  <td class="p-4"><%= contact.email %></td>
+  <td class="p-4 space-x-3">
+
+    <%= link_to "Edit",
+                edit_company_contact_path(@company, contact),
+                data: { turbo_stream: true },
+                class: "text-blue-600" %>
+
+    <%= button_to "Delete",
+                  company_contact_path(@company, contact),
+                  method: :delete,
+                  form: { class: "inline" },
+                  class: "text-red-600",
+                  data: {
+                    turbo_confirm: "Delete this contact?",
+                    turbo_stream: true
+                  } %>
+  </td>
+</tr>

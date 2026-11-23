@@ -28,6 +28,11 @@
       <p class="mt-3 text-4xl font-bold">
         <%= Contact.count %>
       </p>
+
+      <%= link_to "View Contacts",
+                  dashboard_contacts_path,
+                  class: "mt-4 inline-block text-blue-600" %>
+
     </div>
 
     <div class="rounded-xl border bg-white p-6">
