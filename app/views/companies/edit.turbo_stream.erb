@@ -1,0 +1,5 @@
+<%= turbo_stream.update "company_button_new", "" %>
+
+<%= turbo_stream.update "company_form" do %>
+  <%= render "form_panel", company: @company %>
+<% end %>

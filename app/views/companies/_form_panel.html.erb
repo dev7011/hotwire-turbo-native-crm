@@ -1,0 +1,8 @@
+<div class="mb-6 rounded-xl border bg-white p-6">
+  <h2 class="mb-4 text-xl font-bold">
+    <%= company.new_record? ? "New Company" : "Edit Company" %>
+  </h2>
+  <%= render "form", company: company %>
+  <%= render "button_back" %>
+
+</div>

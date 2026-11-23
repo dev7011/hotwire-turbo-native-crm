@@ -1,61 +1,33 @@
 <%= form_with model: company do |form| %>
-  <% if company.errors.any? %>
-    <div class="rounded-lg bg-red-50 p-4 text-red-700">
-      <h3 class="font-semibold">
-        <%= pluralize(company.errors.count, "error") %>
-        prevented saving:
-      </h3>
-
-      <ul class="mt-2 list-disc pl-5">
-        <% company.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_form", record: company %>
 
   <div class="space-y-4">
-
     <div>
       <%= form.label :name, class: "block font-medium" %>
-      <%= form.text_field :name,
-                          class: "mt-1 w-full rounded-lg border p-3" %>
+      <%= form.text_field :name, class: "mt-1 w-full rounded-lg border p-3" %>
     </div>
-
     <div>
       <%= form.label :industry, class: "block font-medium" %>
-      <%= form.text_field :industry,
-                          class: "mt-1 w-full rounded-lg border p-3" %>
+      <%= form.text_field :industry, class: "mt-1 w-full rounded-lg border p-3" %>
     </div>
-
     <div>
       <%= form.label :website, class: "block font-medium" %>
-      <%= form.text_field :website,
-                          class: "mt-1 w-full rounded-lg border p-3" %>
+      <%= form.text_field :website, class: "mt-1 w-full rounded-lg border p-3" %>
     </div>
-
     <div>
       <%= form.label :email, class: "block font-medium" %>
-      <%= form.email_field :email,
-                           class: "mt-1 w-full rounded-lg border p-3" %>
+      <%= form.email_field :email, class: "mt-1 w-full rounded-lg border p-3" %>
     </div>
-
     <div>
       <%= form.label :phone, class: "block font-medium" %>
-      <%= form.telephone_field :phone,
-                               class: "mt-1 w-full rounded-lg border p-3" %>
+      <%= form.telephone_field :phone, class: "mt-1 w-full rounded-lg border p-3" %>
     </div>
-
     <div>
       <%= form.label :address, class: "block font-medium" %>
-      <%= form.text_area :address,
-                         rows: 3,
-                         class: "mt-1 w-full rounded-lg border p-3" %>
+      <%= form.text_area :address, rows: 3, class: "mt-1 w-full rounded-lg border p-3" %>
     </div>
-
     <div>
       <%= form.submit class: "rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700" %>
     </div>
-
   </div>
 <% end %>

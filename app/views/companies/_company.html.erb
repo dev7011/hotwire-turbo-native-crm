@@ -1,17 +1,13 @@
-<tr class="border-t">
+<tr class="border-t" id="<%= dom_id(company) %>">
   <td class="p-4 font-medium">
     <%= link_to company.name, company,
                 class: "text-blue-600 hover:underline" %>
   </td>
-  <td class="p-4">
-    <%= company.industry %>
-  </td>
-  <td class="p-4">
-    <%= company.email %>
-  </td>
+  <td class="p-4"><%= company.industry %></td>
+  <td class="p-4"><%= company.email %></td>
   <td class="space-x-3 p-4">
-    <%= link_to "Edit",
-                edit_company_path(company),
+    <%= link_to "Edit", edit_company_path(company),
+                data: { turbo_stream: true },
                 class: "text-blue-600" %>
     <%= button_to "Delete",
                   company_path(company),
