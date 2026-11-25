@@ -1,4 +1,8 @@
-<%= turbo_stream.replace dom_id(@company), @company %>
+<%= turbo_stream.prepend "companies", @company %>
+
+<%= turbo_stream.prepend "company_mobile" do %>
+  <%= render "company_mobile", company: @company %>
+<% end %>
 
 <%= turbo_stream.update "company_button_new" do %>
   <%= render "button_new" %>

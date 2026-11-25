@@ -50,12 +50,12 @@ class CompaniesController < ApplicationController
     @company.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html {
         redirect_to companies_path,
                     notice: "Company deleted successfully.",
                     status: :see_other
       }
-      format.turbo_stream
     end
   end
 
