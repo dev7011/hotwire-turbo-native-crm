@@ -2,6 +2,7 @@
   <h2 class="mb-4 text-xl font-bold">
     <%= contact.new_record? ? "New Contact" : "Edit Contact" %>
   </h2>
+
   <%= render "form", contact: contact %>
 
   <%= link_to "Cancel", company_contacts_path(@company),

@@ -1,5 +1,4 @@
 <div class="mx-auto max-w-3xl p-8">
-
   <h1 class="mb-6 text-3xl font-bold">
     <%= @contact.first_name %>
     <%= @contact.last_name %>
@@ -30,8 +29,7 @@
 
   </div>
 
-  <%= link_to "Edit",
-              edit_company_contact_path(@company, @contact),
-              class: "mt-6 inline-block text-blue-600" %>
+  <%= base_link("Edit", edit_company_contact_path(@company, @contact)) %>
+  <%= base_link("Back", company_contacts_path(@company)) %>
 
 </div>

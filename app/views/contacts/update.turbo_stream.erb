@@ -3,5 +3,5 @@
 <%= turbo_stream.update "contact_form", "" %>
 
 <%= turbo_stream.update "contact_button_new" do %>
-  <% render "button_new" %>
+  <%=  create_turbo_link("New Contact", new_company_contact_path(@company)) %>
 <% end %>

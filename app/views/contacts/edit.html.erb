@@ -1,3 +1,8 @@
 <div class="mx-auto max-w-6xl p-8">
-  <%= render "form_panel", contact: @contact %>
+  <h2 class="mb-4 text-xl font-bold"> Edit Contact </h2>
+
+  <%= render "form", contact: @contact, turbo: false %>
+
+  <%= link_to "Cancel", company_contacts_path(@company),
+              class: "mt-4 inline-block text-gray-500" %>
 </div>

@@ -9,20 +9,7 @@
   <td class="p-4"><%= contact.position %></td>
   <td class="p-4"><%= contact.email %></td>
   <td class="p-4 space-x-3">
-
-    <%= link_to "Edit",
-                edit_company_contact_path(@company, contact),
-                data: { turbo_stream: true },
-                class: "text-blue-600" %>
-
-    <%= button_to "Delete",
-                  company_contact_path(@company, contact),
-                  method: :delete,
-                  form: { class: "inline" },
-                  class: "text-red-600",
-                  data: {
-                    turbo_confirm: "Delete this contact?",
-                    turbo_stream: true
-                  } %>
+    <%= row_edit_turbo_link("Edit", edit_company_contact_path(@company, contact)) %>
+    <%= row_delete_turbo_button("Delete", company_contact_path(@company, contact), confirm: "Delete this contact?") %>
   </td>
 </tr>

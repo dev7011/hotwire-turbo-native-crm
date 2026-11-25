@@ -5,16 +5,13 @@
       <p class="mt-1 text-gray-500"><%= @company.name %></p>
     </div>
 
-    <%= turbo_frame_tag "contact_button_new" do %>
-      <% render "button_new" %>
-    <% end %>
+    <%= create_turbo_link("New Contact", new_company_contact_path(@company), turbo_frame: "contact_button_new") %>
   </div>
 
   <%= turbo_frame_tag "contact_form" %>
 
   <div class="overflow-hidden rounded-xl border bg-white">
     <table class="w-full text-left">
-
       <thead class="bg-gray-100">
       <tr>
         <th class="p-4">Name</th>
@@ -36,5 +33,7 @@
       </p>
     <% end %>
   </div>
+
+  <%= back_turbo_link("Back", company_path(@company)) %>
 
 </div>

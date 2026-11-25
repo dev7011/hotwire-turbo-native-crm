@@ -40,15 +40,24 @@ class ContactsController < ApplicationController
 
   # PATCH/PUT /contacts/1 or /contacts/1.json
   def update
+
+    puts request.format
+
     respond_to do |format|
       if @contact.update(contact_params)
-        format.turbo_stream
-        format.html { redirect_to @contact, notice: "Contact was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @contact }
+        format.html do
+          redirect_to company_contact_path(@company, @contact),
+                      notice: "Contact was successfully updated.",
+                      status: :see_other
+        end
+
+        format.turbo_stream do
+          flash.now[:notice] = "Contact was successfully updated."
+        end
+
       else
         format.turbo_stream { render :edit, status: :unprocessable_entity }
         format.html { render :edit, status: :unprocessable_content }
-        format.json { render json: @contact.errors, status: :unprocessable_content }
       end
     end
   end
