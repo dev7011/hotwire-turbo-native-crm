@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :deals
+    resources :deals
+
     resources :companies do
         resources :contacts
     end

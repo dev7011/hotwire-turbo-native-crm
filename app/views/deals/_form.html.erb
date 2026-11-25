@@ -1,17 +1,66 @@
-<%= form_with(model: deal, class: "contents") do |form| %>
+<%= form_with(model: deal) do |f| %>
+
   <% if deal.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+    <div class="mb-4 rounded-lg bg-red-50 p-4 text-red-700">
       <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
 
-      <ul class="list-disc ml-6">
-        <% deal.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+      <ul class="mt-2 list-disc pl-5">
+        <% deal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <div class="space-y-5">
+    <div>
+      <%= f.label :title, class: "mb-1 block font-medium" %>
+      <%= f.text_field :title, class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= f.label :company_id, "Company", class: "mb-1 block font-medium" %>
+
+      <%= f.collection_select :company_id,
+                              @companies,
+                              :id,
+                              :name,
+                              { prompt: "Select Company" },
+                              class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= f.label :contact_id, "Contact", class: "mb-1 block font-medium" %>
+      <%= f.collection_select :contact_id,
+                              @contacts,
+                              :id,
+                              :first_name,
+                              { prompt: "Select Contact" },
+                              class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= f.label :value, class: "mb-1 block font-medium" %>
+      <%= f.number_field :value,
+                         step: 0.01,
+                         class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div>
+      <%= f.label :stage, class: "mb-1 block font-medium" %>
+
+      <%= f.select :stage,
+                   Deal::STAGES.map { |stage| [stage.humanize, stage] },
+                   { prompt: "Select Stage" },
+                   class: "w-full rounded-lg border p-3" %>
+    </div>
+
+    <div class="flex gap-3">
+      <%= f.submit class: "rounded-lg bg-blue-600 px-5 py-2 text-white" %>
+
+      <%= link_to "Cancel",
+                  deals_path,
+                  class: "rounded-lg border px-5 py-2" %>
+    </div>
   </div>
 <% end %>

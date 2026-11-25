@@ -19,9 +19,8 @@ class Deal < ApplicationRecord
             inclusion: { in: STAGES }
 
   validates :value, presence: true,
-            numericality: { greater_than: 0 },
-            allow_nil: true
+            numericality: { greater_than: 0 }
 
-  scope :active, -> { where.not(stage: %i[won lost]) }
+  scope :active, -> { where.not(stage: %w[won lost]) }
 
 end
